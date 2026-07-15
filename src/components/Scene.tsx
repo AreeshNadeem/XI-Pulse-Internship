@@ -20,8 +20,14 @@ export default function Scene() {
 
     <Canvas camera={{ position: [10, 10, 10], fov: 50 }}>
       
+    // ambient light illumivates the entire scene  
     <ambientLight intensity={1} />
-    <directionalLight position={[10, 10, 5]} intensity={1} />
+
+    //diretional light is specific which shines according to the position that is set
+    <directionalLight 
+    position={[10, 10, 10]} // (x, y, z)
+    intensity={2} />
+
     <axesHelper args={[5]} />
     <gridHelper args={[10, 10]} />
       
