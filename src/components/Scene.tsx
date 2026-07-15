@@ -4,21 +4,29 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stage } from "@react-three/drei";
 
 import Factory from "./Factory";
+import House from "./House";
 
 export default function Scene() {
   return (
+
+  
+    
+    //<Canvas camera={{ position: [5, 5, 5], fov: 50 }}>
+    //<Canvas camera={{ position: [20, 15, 20], fov: 30 }  }> 
+    //<Canvas camera={{ position: [0, -1, 0], fov: 30 }  }>  //this makes the camera got beneath the model
+
+    // fov: field of view, it tells how much the camera can see. 
+    // the position tells where the camera is actually placed in the 3D space
+
     <Canvas camera={{ position: [10, 10, 10], fov: 50 }}>
-      <ambientLight intensity={2} />
-      <directionalLight position={[10, 10, 10]} />
-
-      <axesHelper args={[5]} />
-      <gridHelper args={[20, 20]} />
-
       
-    <Factory />
-     
-
+    <ambientLight intensity={1} />
+    <directionalLight position={[10, 10, 5]} intensity={1} />
+    <axesHelper args={[5]} />
+    <gridHelper args={[10, 10]} />
       
+    <House/> 
+    
 
       <OrbitControls />
     </Canvas>
