@@ -5,6 +5,7 @@ import { OrbitControls, Stage } from "@react-three/drei";
 import { Environment } from "@react-three/drei";
 import Factory from "./Factory";
 import House from "./House";
+import Liver from "./Liver";
 
 export default function Scene() {
   return (
@@ -19,18 +20,29 @@ export default function Scene() {
     // fov: field of view, it tells how much the camera can see. 
     // the position tells where the camera is actually placed in the 3D space
 
-    <Canvas camera={{ position: [10, 10, 10], fov: 50 }}>
+    <Canvas camera={{ position: [4, 4, 6], fov: 45 }}>
+
+      <color
+      attach="background"
+      args={["#ececec"]}
+      />
       
     {/* ambient light illumivates the entire scene */}
-    <ambientLight intensity={1} />
+    <ambientLight intensity={0.5} />
 
     {/* directional light is specific which shines according to the position that is set */}
-    <directionalLight 
-    position={[10, 10, 10]} // (x, y, z)
-    intensity={2} /> 
+    <directionalLight
+        position={[6,8,5]}
+        intensity={2.2}
+    />
+
+    <directionalLight
+    position={[-5,3,-2]}
+    intensity={0.8}
+    />
 
 
-    {/* there are multiple presets and it sets the lighting, etc accordingly. it creates imaginary world around the model */}
+    {/* there are multiple presets asnd it sets the lighting, etc accordingly. it creates imaginary world around the model */}
     <Environment preset="warehouse" />
 
 
@@ -39,15 +51,20 @@ export default function Scene() {
 
 
     {/* draws line to see the 3 axes */}
-    <axesHelper args={[5]} />
+    <axesHelper args={[2]} />
     {/* draws a grid for better visualization */}
-    <gridHelper args={[10, 10]} />
+    <gridHelper args={[20, 20]} />
 
       
-    <House/> 
     
+    <Liver />
 
-      <OrbitControls />
+
+      <OrbitControls
+        target={[0,0.5,0]}
+        minDistance={3}
+        maxDistance={10}
+     />
     </Canvas>
   );
 }
